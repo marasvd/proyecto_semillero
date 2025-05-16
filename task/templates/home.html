@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Entropy</title>
+</head>
+
+<body>
+
+    <!-- Barra de navegación con tus vistas -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a></li>
+                <li><a href="{% url 'archivos' %}">Archivos</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'equipo_editorial' %}">Equipo Editorial</a></li>
+                <li><a href="{% url 'politicas' %}">Políticas</a></li>
+                <li><a href="{% url 'instrucciones' %}">Instrucciones</a></li>
+                <li><a href="{% url 'ediciones' %}">Ediciones</a></li>
+                <li><a href="{% url 'enviar_articulo' %}">Enviar Artículo</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Register</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section>
+            {% block content %}
+            <h1>Entropy</h1>
+            <p><em>Revista Científica</em> es una publicación científica de acceso abierto editada por la Universidad
+                cooperativa de colombia...</p>
+
+            <p>Sus artículos se publican en la plataforma del Journal
+                (<a href="https://revistas.udistrital.edu.co/index.php/revcie">revistas.udistrital.edu.co</a>) y no
+                tienen costo alguno...</p>
+
+            <p>La revista tiene una periodicidad trimestral (enero-abril, mayo-agosto y septiembre-diciembre)...</p>
+
+            <p><strong>A partir de 2024, la revista será continua con una periodicidad cuatrimestral.</strong></p>
+
+            <p>L-ISSN: 0124-2253 - e-ISSN: 2344-8350</p>
+            <p><small>Tasa de rechazo 2023: 78.1%</small></p>
+            {% endblock %}
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Revista Científica - Universidad cooperativa UCC</p>
+    </footer>
+
+</body>
+
+</html>

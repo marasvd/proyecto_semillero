@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %}
 
-<head>
-    <title>Sobre Nosotros</title>
-</head>
+{% block title %}Sobre Nosotros - Revista Científica UCC Neiva{% endblock %}
 
-<body>
-    <h1>Sección: Sobre Nosotros</h1>
-</body>
-
-</html>
+{% block content %}
+<section id="sobre-nosotros">
+    <h2>Sobre la Revista Científica UCC Neiva</h2>
+    <h3>Misión</h3>
+    <p>La Revista Científica de la Universidad Cooperativa de Colombia, sede Neiva, tiene como misión principal
+        difundir el conocimiento científico generado por investigadores de la institución y de otras comunidades
+        académicas, contribuyendo al avance de la ciencia, la tecnología y la innovación en la región y el país.
+        Buscamos ser un referente en la publicación de investigaciones rigurosas y de alto impacto, promoviendo
+        el acceso abierto al conocimiento.</p>
+    <h3>Visión</h3>
+    <p>Aspiramos a ser una revista científica líder a nivel regional y nacional, reconocida por la calidad de
+        sus publicaciones, su compromiso con la ética de la investigación y su contribución al desarrollo del
+        pensamiento crítico y la solución de problemas relevantes para la sociedad.</p>
+    <h3>Afiliación Institucional</h3>
+    <p>Esta revista es una publicación de la Universidad Cooperativa de Colombia, sede Neiva, una institución
+        comprometida con la formación integral, la investigación y la proyección social.</p>
+</section>
+{% endblock %}

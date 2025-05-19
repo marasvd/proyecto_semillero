@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %}
 
-<head>
-    <title>Políticas</title>
-</head>
+{% block title %}Políticas - Revista Científica UCC Neiva{% endblock %}
 
-<body>
-    <h1>Sección: Políticas</h1>
-</body>
-
-</html>
+{% block content %}
+<section id="politicas">
+    <h2>Políticas de la Revista</h2>
+    <ul>
+        <li><strong>Política de Acceso Abierto:</strong> El contenido de esta revista es de libre acceso para
+            promover la difusión global del conocimiento.</li>
+        <li><strong>Política de Ética de Publicación:</strong> La revista se compromete con los más altos
+            estándares de ética en la publicación científica, velando por la integridad de la investigación y
+            previniendo el plagio y la mala conducta científica.</li>
+        <li><strong>Política de Derechos de Autor y Licencia:</strong> Se informará detalladamente sobre los
+            términos de derechos de autor y la licencia bajo la cual se publican los contenidos.</li>
+        <li><strong>Política de Proceso de Revisión por Pares:</strong> Los manuscritos son sometidos a un
+            riguroso proceso de revisión por pares para garantizar su calidad y validez científica.</li>
+        <li><strong>Política de Preservación Digital:</strong> (Si aplica) Se implementarán mecanismos para
+            asegurar la conservación a largo plazo del contenido digital de la revista.</li>
+    </ul>
+    <p>(Cada una de estas políticas se desarrollará con mayor detalle en secciones específicas en el futuro).
+    </p>
+</section>
+{% endblock %}

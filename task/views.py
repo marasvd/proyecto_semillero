@@ -9,6 +9,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .articulo_forms import EnviarArticuloForm
 from django.contrib import messages
+from django.contrib.auth import logout, login
+
 
 def signup(request):
     if request.method == 'GET':
@@ -17,37 +19,25 @@ def signup(request):
         })
 
     elif request.method == 'POST':
-        if request.POST['password1'] == request.POST['password2']:
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
             try:
-                # Verificar si el email ya existe
-                if User.objects.filter(email=request.POST['email']).exists():
-                    return render(request, 'signup.html', {
-                        'form': CustomUserCreationForm(),
-                        'error': 'Este correo electrónico ya está registrado'
-                    })
-                else:
-                    # Crear el usuario
-                    user = User.objects.create_user(
-                        username=request.POST['username'],
-                        email=request.POST['email'],
-                        password=request.POST['password1'],
-                        first_name=request.POST['first_name'],
-                        last_name=request.POST['last_name'])
-
-                    return redirect('home')
+                user=form.save()
+                login(request, user)  # Inicia sesión al usuario recién registrado
+                return redirect('home')
             except IntegrityError:
                 return render(request, 'signup.html', {
-                    'form': CustomUserCreationForm(),
+                    'form': form,
                     'error': 'Este usuario ya existe'
                 })
         else:
             return render(request, 'signup.html', {
-                'form': CustomUserCreationForm(),
-                'error': 'Las contraseñas no coinciden'
+                'form': form
             })
 
-
 def home(request):
+    user = request.user  # Obtiene el usuario autenticado
+    context = {'user': user}  # Crea el contexto para el template
     return render(request, 'home.html')
 
 def logout_view(request):

@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %}
 
-<head>
-    <title>Contacto</title>
-</head>
+{% block title %}Contacto - Revista Científica UCC Neiva{% endblock %}
 
-<body>
-    <h1>Sección: Contacto</h1>
-</body>
-
-</html>
+{% block content %}
+<section id="contacto">
+    <h2>Contacto</h2>
+    <h3>Información General UCC Neiva</h3>
+    <p>Dirección: [Buscar la dirección principal de la Universidad Cooperativa de Colombia, sede Neiva]</p>
+    <p>Teléfono: [Buscar el número de teléfono de contacto de la UCC Neiva]</p>
+    <p>Correo Electrónico General: [Buscar un correo electrónico de contacto general de la UCC Neiva]</p>
+    <h3>Contacto Específico de la Revista</h3>
+    <p>Correo Electrónico de la Revista: revistacientifica.neiva@ucc.edu.co (Ejemplo, ¡verifica o crea uno!)</p>
+    <p>(Próximamente: Formulario de Contacto)</p>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h1>Perfil de {{ usuario.username }}</h1>
+
+<section>
+    <h2>Información Personal</h2>
+    <p><strong>Nombre:</strong> {{ usuario.first_name }} {{ usuario.last_name }}</p>
+    <p><strong>Nombre de Usuario:</strong> {{ usuario.username }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+
+    {% if perfil.telefono %}
+    <p><strong>Teléfono:</strong> {{ perfil.telefono }}</p>
+    {% endif %}
+
+    {% if perfil.fecha_nacimiento %}
+    <p><strong>Fecha de nacimiento:</strong> {{ perfil.fecha_nacimiento|date:'Y-m-d' }}</p>
+    {% endif %}
+</section>
+
+<section>
+
+    <p><a href="{% url 'editar_perfil' %}">Editar Perfil</a></p>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</section>
+{% endblock %}

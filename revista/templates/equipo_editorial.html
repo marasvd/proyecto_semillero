@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %}
 
-<head>
-    <title>Equipo Editorial</title>
-</head>
+{% block title %}Equipo Editorial - Revista Científica UCC Neiva{% endblock %}
 
-<body>
-    <h1>Sección: Equipo Editorial</h1>
-</body>
-
-</html>
+{% block content %}
+<section id="equipo-editorial">
+    <h2>Equipo Editorial</h2>
+    <p>El equipo editorial de la Revista Científica de la Universidad Cooperativa de Colombia, sede Neiva, está
+        conformado por investigadores y académicos comprometidos con la excelencia y el rigor científico,
+        encargados de la dirección y gestión del proceso de publicación.</p>
+    <h3>Roles:</h3>
+    <ul>
+        <li><strong>Editor en Jefe:</strong> (Nombre a definir) - Responsable de la dirección general de la
+            revista.</li>
+        <li><strong>Editores Asociados:</strong> (Nombres a definir) - Expertos en diversas áreas temáticas.
+        </li>
+        <li><strong>Comité Editorial:</strong> (Nombres a definir) - Grupo de investigadores asesores.</li>
+    </ul>
+    <p>(A medida que se defina el equipo, se añadirán los nombres, afiliaciones y una breve descripción de su
+        experiencia).</p>
+</section>
+{% endblock %}

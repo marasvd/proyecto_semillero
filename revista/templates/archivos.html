@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html>
+{% extends 'home.html' %}
 
-<head>
-    <title>Archivos</title>
-</head>
+{% block title %}Archivos - Revista Científica UCC Neiva{% endblock %}
 
-<body>
-    <h1>Sección: Archivos</h1>
-</body>
-
-</html>
+{% block content %}
+<section id="archivos">
+    <h2>Archivo de Ediciones</h2>
+    <p>Esta sección mostrará el archivo de ediciones pasadas de la revista. En futuras versiones, podrá explorar
+        y acceder a todos los artículos publicados.</p>
+    <h3>Archivo:</h3>
+    <ul>
+        <li>Año 2024</li>
+        <li>Año 2025 (Próximamente)</li>
+    </ul>
+</section>
+{% endblock %}

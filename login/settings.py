@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'task.middleware.NoCacheMiddleware',
+    
 
 ]
 
@@ -68,7 +69,11 @@ ROOT_URLCONF = 'login.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR / 'task'/ 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'task', 'templates'),
+            os.path.join(BASE_DIR, 'revista', 'templates'),
+            os.path.join(BASE_DIR, 'usuario', 'templates'),
+            # Si por alguna razón tienes una carpeta 'templates' directamente dentro de 'login' (la raíz):
+            os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

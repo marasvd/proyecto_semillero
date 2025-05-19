@@ -1,16 +1,45 @@
 {% extends 'home.html' %}
+
 {% block content %}
-<h1>Enviar Artículo</h1>
+<h1>Instrucciones para el Envío de Artículos</h1>
+
+<p>Gracias por su interés en publicar en la Revista Científica de la Universidad Cooperativa de Colombia - Sede Neiva. A
+    continuación, encontrará el formulario para el envío de su manuscrito. Por favor, asegúrese de haber revisado
+    detenidamente las <a href="{% url 'politicas' %}">Políticas de la Revista</a>,</a> antes de proceder con el envío.
+</p>
+
+<h3>Formatos de Archivo Aceptados</h3>
+<ul>
+    <li>Texto principal del manuscrito: .DOC, .DOCX, .RTF</li>
+    <li>Figuras: .JPG, .PNG, .TIFF (con resolución mínima de 300 DPI)</li>
+    <li>Tablas: Formato editable (.DOC, .DOCX, .XLS, .XLSX)</li>
+    <li>Carta de presentación (opcional): .DOC, .DOCX, .PDF</li>
+</ul>
+
+<h3>Tamaño Máximo de Archivo</h3>
+<p>Por favor, asegúrese de que el tamaño total de los archivos adjuntos no exceda los [Indicar tamaño máximo, por
+    ejemplo: 20 MB].</p>
+
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{% if message.tags %}{% endif %}{{ message }}</li>
         {% endfor %}
 </ul>
 {% endif %}
+
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Enviar Artículo</button>
 </form>
+
+{% if beta_active %}
+<div class="alerta-beta">
+    <p><strong>Importante (Fase Beta):</strong> Esta funcionalidad de envío de artículos se encuentra actualmente en
+        fase beta. Le informaremos cuando esté completamente operativa. Por el momento, puede utilizar este formulario
+        para enviarnos su información y archivos, los cuales serán revisados una vez que el sistema esté finalizado.</p>
+</div>
+{% endif %}
+
 {% endblock %}

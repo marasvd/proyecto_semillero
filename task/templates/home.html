@@ -12,57 +12,139 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a></li>
-                <li><a href="{% url 'archivos' %}">Archivos</a></li>
-                <li><a href="{% url 'contacto' %}">Contacto</a></li>
-                <li><a href="{% url 'equipo_editorial' %}">Equipo Editorial</a></li>
-                <li><a href="{% url 'politicas' %}">Políticas</a></li>
-                <li><a href="{% url 'instrucciones' %}">Instrucciones</a></li>
-                <li><a href="{% url 'ediciones' %}">Ediciones</a></li>
-                <li><a href="{% url 'enviar_articulo' %}">Enviar Artículo</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'perfil' %}">Mi Perfil</a></li>
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Inicio</a></li>
                 <li>
-                    <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn">{{ user.username }} <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'perfil_usuario' %}">Mi Perfil</a>
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </div>
+                    </div>
                 </li>
                 {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Register</a></li>
                 {% endif %}
-
+                <li><a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a></li>
+                <li><a href="{% url 'archivos' %}">Archivos</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'equipo_editorial' %}">Equipo Editorial</a></li>
+                <li><a href="{% url 'politicas' %}">Políticas</a></li>
+                <li><a href="{% url 'enviar_articulo' %}">Enviar Artículo</a></li>
             </ul>
         </nav>
     </header>
-
     <!-- Contenido principal -->
     <main>
         <section>
             {% block content %}
             <h1>Entropy</h1>
-            <p><em>Revista Científica</em> es una publicación científica de acceso abierto editada por la Universidad
+            <p><em>Entropy</em> es una publicación científica de acceso abierto editada por la Universidad
                 cooperativa de colombia...</p>
 
-            <p>Sus artículos se publican en la plataforma del Journal
+            <p>Sus artículos se publican en la plataforma
                 (<a href="https://revistas.udistrital.edu.co/index.php/revcie">revistas.udistrital.edu.co</a>) y no
                 tienen costo alguno...</p>
+            <div class="propósito-alcance">
 
-            <p>La revista tiene una periodicidad trimestral (enero-abril, mayo-agosto y septiembre-diciembre)...</p>
+                <p>La Revista Científica de la Universidad Cooperativa de Colombia - Sede Neiva se establece como un
+                    canal fundamental para la difusión de la producción científica de alta calidad generada por la
+                    comunidad académica local, regional, nacional e internacional. Buscamos fomentar un diálogo abierto
+                    y riguroso entre investigadores, académicos y profesionales de diversas disciplinas, contribuyendo
+                    así al avance del conocimiento y a la solución de problemáticas relevantes para nuestro entorno.</p>
 
-            <p><strong>A partir de 2024, la revista será continua con una periodicidad cuatrimestral.</strong></p>
+                <p>Si bien nuestra revista acoge investigaciones de diversas áreas del saber, actualmente ponemos un
+                    énfasis especial en [Aquí podrías mencionar algunas áreas de interés prioritarias para la UCC Neiva,
+                    si las conoces o si la universidad tiene fortalezas particulares. Por ejemplo: "ciencias sociales y
+                    económicas", "ingenierías y tecnologías", "ciencias de la salud", "educación y humanidades"].
+                    Invitamos a la comunidad científica a explorar nuestras convocatorias y a compartir sus valiosos
+                    aportes.</p>
 
-            <p>L-ISSN: 0124-2253 - e-ISSN: 2344-8350</p>
-            <p><small>Tasa de rechazo 2023: 78.1%</small></p>
+                <p>En la Revista Científica UCC Neiva, nos guiamos por principios fundamentales como la excelencia
+                    académica, la ética en la investigación, la transparencia en el proceso editorial, el compromiso con
+                    el acceso abierto al conocimiento y el fomento de la colaboración científica.</p>
+            </div>
+
+
+            <div class="detalles-revista">
+
+                <p>L-ISSN: 0124-2253 - e-ISSN: 2344-8350</p>
+
+            </div>
+
+            <div class="llamada-accion">
+                <p>¿Interesado en publicar?</p>
+                <a href="{% url 'enviar_articulo' %}" class="boton-enviar">Enviar Artículo</a>
+            </div>
             {% endblock %}
         </section>
     </main>
 
     <!-- Pie de página -->
     <footer>
-        <p>© 2024 Revista Científica - Universidad cooperativa UCC</p>
+        <div class="footer-container">
+            <div class="footer-column universidad">
+                <h3>Universidad Cooperativa de Colombia</h3>
+                <p>Institución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación
+                    Nacional.</p>
+                <p><strong>Sede Principal:</strong> [Dirección de la Sede Principal]</p>
+                <p><strong>NIT:</strong> [Número de Identificación Tributaria]</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    {# Añade aquí los enlaces reales a las redes sociales de la universidad #}
+                </div>
+            </div>
+            <div class="footer-column academicos">
+                <h3>Académicos</h3>
+                <ul>
+                    <li><a href="#">Programas de Pregrado</a></li>
+                    <li><a href="#">Programas de Posgrado</a></li>
+                    <li><a href="#">Investigación</a></li>
+                    <li><a href="#">Extensión y Proyección Social</a></li>
+                    <li><a href="#">Biblioteca</a></li>
+                    <li><a href="#">Educación Continua</a></li>
+                </ul>
+            </div>
+            <div class="footer-column institucional">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a></li>
+                    <li><a href="#">Acreditación</a></li>
+                    <li><a href="#">Transparencia</a></li>
+                    <li><a href="#">Normatividad</a></li>
+                    <li><a href="#">Sedes</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                    <li><a href="#">Noticias y Eventos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contacto">
+                <h3>Contacto General</h3>
+                <p><strong>Línea Gratuita Nacional:</strong> [Número de Línea Gratuita]</p>
+                <p><strong>Teléfono Conmutador:</strong> [Número de Conmutador]</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:[correo de contacto general]">[correo de contacto
+                        general]</a></p>
+                <p><a href="{% url 'contacto' %}">Formulario de Contacto</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Universidad Cooperativa de Colombia - Todos los derechos reservados.</p>
+            <p><a href="{% url 'politicas' %}">Políticas de Privacidad</a> | <a href="#">Términos y Condiciones</a> | <a
+                    href="#">Mapa del Sitio</a></p>
+        </div>
     </footer>
 
 </body>
